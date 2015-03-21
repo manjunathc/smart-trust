@@ -1,10 +1,7 @@
 {
-  "name": "workout-tracker",
+  "name": "smart-trust",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
   "scripts": {
     "start": "node smart-trust.js"
   },
