@@ -1,0 +1,199 @@
+#mainheader {
+	background-color: #04A641;
+  color: #FFFFFF;
+}
+
+#navheader {
+  background-color: #999;
+  color: #FFFFFF;
+  background-image: url('images/headerImage.jpg');
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: inherit;
+  vertical-align: middle; 
+}
+
+#navheader img.profile {
+  vertical-align: middle; 
+  border-radius: 50%;
+  width: 74px;
+  height: 74px;
+}
+
+[drawer] {
+	background-color: #FFFFFF;
+}
+
+core-drawer-panel:not([narrow]) #navicon{
+	display: none;
+}
+
+html,body {
+  height: 100%;
+  margin: 0;
+  background-color: #E5E5E5;
+  font-family: "RobotoDraft", sans-serif;
+}
+
+.box {
+  margin: 40px;
+}
+
+section {
+  padding: 20px 0;
+}
+
+
+section > div {
+  padding: 14px;
+  font-size: 16px;
+}
+
+paper-dropdown-menu{
+  font-size: 15px;
+  text-decoration: none;
+  background-color: #FFFFFF;
+}
+
+div {
+  display: block;
+}
+
+.fab {
+  display: inline-block;
+  background: white;
+  box-sizing: border-box;
+  width: 56px;
+  height: 56px;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+section > div {
+  padding: 14px;
+  font-size: 16px;
+}
+
+.menu{
+  text-decoration: none;
+}
+
+.businessCard{
+  background-color: #FFFFFF;
+  margin: 10px;
+  position: relative;
+  padding: 10px;
+}
+
+
+paper-fab.writeReview{
+  background: #04A641;
+  color: #fff;
+  bottom: 24px;
+  right: 24px;
+  position: absolute;
+  z-index: 1;
+}
+
+
+paper-dropdown-menu{
+  color: black;
+}
+
+.getDirections{
+  font-weight: bold;
+}
+
+.map{
+  width: 100%;
+  height: 100%;
+}
+
+.restaurantName{
+  color: #07155A;
+}
+
+.separator{
+  padding: 16px;
+  font-size: 14px;
+  border-top: 2px solid #e0e0e0;
+  border-color: #04A641;
+}
+
+.reviewDialog{
+  width: 70%;
+}
+
+paper-slider{
+  width: 100%;
+}
+
+core-field {
+  margin: 10px;
+  height: 20px;
+}
+
+.label{
+  width: 80px;
+}
+.register{
+  width: 70%
+}
+
+.merchantRegistration{
+  background-color: #FFFFFF;
+  padding: 20px;
+}
+
+::content .input{
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: #333;
+  font-size: 14px;
+}
+
+paper-button[raised].colored {
+  background: #04A641;
+  color: #fff;
+  width: 25%;
+}
+
+core-item {
+  font-size: 13px !important
+}
+
+core-item.core-selected {
+    font-weight: bold;
+    background-color: #F0F0F0; 
+}
+
+.registerButton{
+  background-color: #04A641;
+  color: white;
+}
+
+.hiddenMenu{
+  visibility: hidden;
+}
+
+.reviewHeader{
+  color: #04A641;
+}
+
+.reviewButton{
+  background-color: #04A641;
+  color: #FFFFFF;
+}
+
+.message{
+  font-size: 10px;
+}
+
+.resDetailsMainPage{
+  font-size: 14px;
+}
+

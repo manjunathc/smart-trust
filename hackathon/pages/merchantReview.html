@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" 
+  content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<!-- 1. Load platform support before any code that touches the DOM. -->
+		<script src="../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+		<title>SmarTrust - Hospital Details</title>
+		<link rel="stylesheet" href="../app.css">
+		<link rel="import" href="../elements.html">
+		<link rel="import" href="../elements/review-list.html">
+		<link rel="import" href="../elements/app-bar.html">
+		<link rel="import" href="../elements/res-details.html">
+	</head>
+<body fullbleed layout vertical unresolved>
+	
+	<template is="auto-binding">
+		<section>
+			<paper-fab class="writeReview bottom" icon="create" on-tap="{{ newReview }}" role="button"  tabindex="0" aria-label="launch" title="Write a review"></paper-fab>
+	        <paper-action-dialog backdrop class="reviewDialog" layered="false">
+	        	<form id="submitReview">
+	        		<div class="middle" layout horizontal flex center>
+	        			<img src="../images/writeReview.jpeg" width="170px" height="150px">
+			       		<header layout vertical flex>
+			       			<h1>{{restaurantName}}</h1>
+			       			<span class="reviewHeader">{{restaurantStreet}}, {{restaurantCity}}, {{restaurantState}} - {{restaurantPincode}}</span>
+			       		</header>
+					</div>
+		       		<div class="separator"><i>Please add your experience below:</i></div>
+		        	<div>
+				      <span>Rating</span>
+				      <paper-slider id="ratings" pin snaps max="5" step="1" value="{{ratings}}" editable></paper-slider>
+				    </div>
+		        	<paper-input-decorator label="Comments" floatingLabel>
+				      <paper-autogrow-textarea>
+				        <textarea value="{{comments}}"></textarea>
+				      </paper-autogrow-textarea>
+				    </paper-input-decorator>
+
+					<paper-button raised affirmative onclick="document.querySelector('#toast1').show()">Cancel</paper-button>
+					<paper-button raised type="submit" on-tap="{{doSend}}" affirmative autofocus>Submit</paper-button>
+					
+				</form>
+				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="{{host}}transactions"
+				  body='restaurantId={{restaurantId}}&userId={{user.currentUserId}}&review={{comments}}&rating={{ratings}}' on-core-response="{{handleResponse}}" on-core-error="{{handleError}}">
+			    </core-ajax>
+	    	</paper-action-dialog>
+		</section>
+		<core-drawer-panel id="drawerPanel" responsiveWidth="800px" touch-action selected="drawer">
+			<core-header-panel drawer mode="waterfall-tall">
+				<core-toolbar id="navheader">
+					<div class="middle" layout vertical flex center>
+						<img class="profile" src="{{user.profile}}" hidden?="{{!user.profile}}">
+					</div>
+					<div class="bottom" layout vertical flex center>
+						<span>{{user.name}}</span>
+						<span>{{user.email}}</span>
+					</div>
+				</core-toolbar>
+				<core-menu>
+				    <core-item id="registerMerchantMenu" icon="add-box" label="Register Hospital" class="menu">
+				   		<a href="registerMerchant.html" target="_self"></a>
+			   		</core-item>
+    				<core-item id="myReviewsMenu" icon="maps:rate-review" label="My Experience" class="hiddenMenu">
+    					<a href="myReviews.html" target="_self"></a>
+    				</core-item>
+				</core-menu>
+			</core-header-panel>
+			<core-header-panel main mode="waterfall-tall">
+				<core-toolbar id="mainheader">
+					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Write a Review</paper-icon-button>
+					<div flex></div>
+					<span class="bottom indent title">
+						<core-icon icon="hardware:security"></core-icon> SmarTrust
+					</span>
+					<app-bar url="{{hostName}}restaurants"></app-bar>
+					<paper-icon-button icon="search" role="button" on-tap="{{searchRestaurant}}"></paper-icon-button>
+					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>
+				</core-toolbar>
+				<div class="content" vertical>
+					<res-details restaurantName="{{restaurantName}}" restaurantStreet="{{restaurantStreet}}" restaurantCity="{{restaurantCity}}" restaurantState="{{restaurantState}}" restaurantPincode="{{restaurantPincode}}" url="{{hostName}}restaurants?restaurantId={{restaurantId}}" ></res-details>
+				</div>
+				<div class="container" layout horizontal center>
+					<review-list url='{{hostName}}transactions?restaurantId={{restaurantId}}'></review-list>
+					<paper-toast id="toast1" text="Submission Cancelled."></paper-toast>
+					<paper-toast id="toast2" class="capsule" text="Experience Submitted Successfully!!!" style="padding-right: 60px;"></paper-toast>
+					<paper-toast id="toast3" class="capsule" text="Could not submit the details. Please try after sometime!!!" style="padding-right: 60px;"></paper-toast>
+				</div>
+			</core-header-panel>
+		</core-drawer-panel>
+		</template>
+		<script src="../app.js"></script>
+	</body>
+</html>

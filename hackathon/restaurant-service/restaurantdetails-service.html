@@ -1,0 +1,36 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<polymer-element name="restaurantdetails-service" attributes="url restaurants restaurantName restaurantStreet restaurantCity restaurantState restaurantPincode restaurantContact">
+  <template>
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+    <core-ajax id="ajax"
+      auto
+      url="{{url}}"
+      on-core-response="{{restaurantsLoaded}}"
+      handleAs="json">
+    </core-ajax>
+  </template>
+  <script>
+  Polymer('restaurantdetails-service', {
+    created: function() {
+      this.restaurants = [];
+    },
+    restaurantsLoaded: function() {
+      this.restaurants = this.$.ajax.response;
+      var restaurantDetail = this.restaurants.restaurants;
+      if(restaurantDetail.length>0){
+        this.restaurantName = restaurantDetail[0].restaurantName;
+        this.restaurantStreet = restaurantDetail[0].street;
+        this.restaurantCity = restaurantDetail[0].city;
+        this.restaurantState = restaurantDetail[0].state;
+        this.restaurantPincode = restaurantDetail[0].pincode;
+        this.restaurantContact = restaurantDetail[0].contact;
+      }
+    }
+  });
+  </script>
+</polymer-element>

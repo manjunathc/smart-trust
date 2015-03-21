@@ -1,0 +1,18 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../restaurant-service/restaurantdetails-service.html">
+<link rel="import" href="../elements.html">
+
+<polymer-element name="res-details" noscript attributes="url restaurantName restaurantStreet restaurantCity restaurantState restaurantPincode">
+  <template>
+    <restaurantdetails-service id="service" url="{{url}}" restaurantName="{{restaurantName}}" restaurantStreet="{{restaurantStreet}}" restaurantCity="{{restaurantCity}}" restaurantState="{{restaurantState}}" restaurantPincode="{{restaurantPincode}}" restaurantContact="{{restaurantContact}}"></restaurantdetails-service>
+    <paper-shadow class="businessCard" z="2">
+        <h1 class="restaurantName">{{restaurantName}}</h1>
+        <strong class="street-address">Address:</strong>
+        <span itemprop="streetAddress">{{restaurantStreet}}</span>
+        <br>
+        <span itemprop="addressStreet">{{restaurantCity}}</span>, <span itemprop="addressCity">{{restaurantState}}</span> <span itemprop="pincode">{{restaurantPincode}}</span>  
+        <br>
+        <core-icon icon="communication:call" style="width: 18px; height: 18px"></core-icon>{{restaurantContact}}
+    </paper-shadow>
+    </template>
+</polymer-element>
