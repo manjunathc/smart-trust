@@ -5,9 +5,9 @@ var bitcore = require('bitcore');
 var Review = require('./../lib/postReview.js');
 var BlockchainTransactions = require('./../lib/blockchaintrasactions.js');
 
-var merchantPrivatekeys = require('./../keys/MerchantPrivateKeys.js');
-var merchantPublickeys = require('./../keys/MerchantPublicKeys.js');
-var merchantAddresskeys = require('./../keys/MerchantAddressKeys.js');
+var merchantPrivatekeys = require('./../keys/MerchantPrivateKeys');
+var merchantPublickeys = require('./../keys/MerchantPublicKeys');
+var merchantAddresskeys = require('./../keys/MerchantAddressKeys');
 var Networks = bitcore.Networks;
 
 var reviewToBlockchain = new Review('https://test-insight.bitpay.com', Networks.testnet);
