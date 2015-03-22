@@ -22,7 +22,7 @@ var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000
                 replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };       
 
 
-var mongodbUri = 'mongodb://glb_hackathon:glb_hackathon@ds031541.mongolab.com:31541/heroku_app35108773/review_details';
+var mongodbUri = 'mongodb://glb_hackathon:glb_hackathon@ds031541.mongolab.com:31541/heroku_app35108773';
 //var mongodbUri='mongodb://localhost/review_details';
 var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 
